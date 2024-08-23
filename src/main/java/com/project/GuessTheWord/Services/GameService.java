@@ -17,6 +17,12 @@ public class GameService {
         allCharacters = new char[randomChoosen.length()];
     }
 
+    public static void addGuessedWord(char GuessWord) {
+
+
+
+    }
+
     public String getRandomWord() {
         String blank = "";
 
