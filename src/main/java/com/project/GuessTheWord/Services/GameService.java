@@ -5,9 +5,9 @@ import java.util.Random;
 
 @Service
 public class GameService {
-    private String randomChoosen = null;
+    private static String randomChoosen = null;
     private String[] randomWords = {"Java", "twitter", "Game", "meta", "apartment", "flight", "japan"};
-    private char[] allCharacters;
+    private static char[] allCharacters;
     private Random random = new Random();
 
 
@@ -18,17 +18,23 @@ public class GameService {
     }
 
     public static void addGuessedWord(char GuessWord) {
-
-
-
+        for(int i=0; i<randomChoosen.length(); i++){
+            if(GuessWord == randomChoosen.charAt(i)){
+                allCharacters[i] = GuessWord;
+            }
+        }
     }
 
     public String getRandomWord() {
         String blank = "";
 
         for (char ch : allCharacters){
-            if(ch=='\u0000') blank+="__";
-
+            if(ch=='\u0000') {
+                blank += "__";
+            }
+            else {
+                blank += ch;
+            }
             blank+=' ';
         }
         return blank;

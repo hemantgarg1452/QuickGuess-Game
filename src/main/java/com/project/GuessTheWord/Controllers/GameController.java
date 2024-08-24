@@ -17,9 +17,13 @@ public class GameController {
         System.out.println("Captured char is : " + GuessWord);
 
         String randomWord = gameService.getRandomWord();
-        model.addAttribute("WordToDisplay", randomWord);
 
-        GameService.addGuessedWord(GuessWord.charAt(0));
+        if(GuessWord!=null){
+            GameService.addGuessedWord(GuessWord.charAt(0));
+            randomWord = gameService.getRandomWord();
+        }
+
+        model.addAttribute("WordToDisplay", randomWord);
 
         return "Home";
     }
