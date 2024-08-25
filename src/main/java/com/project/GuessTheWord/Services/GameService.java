@@ -17,12 +17,18 @@ public class GameService {
         allCharacters = new char[randomChoosen.length()];
     }
 
-    public static void addGuessedWord(char GuessWord) {
+    public static boolean addGuessedWord(char GuessWord) {
+        //System.out.println("GuessWord checked: " + GuessWord);  // Debug statement
+        boolean isGuessed = false;
+
+        // Checking the guessed word is in the randomly chosen word
         for(int i=0; i<randomChoosen.length(); i++){
             if(GuessWord == randomChoosen.charAt(i)){
                 allCharacters[i] = GuessWord;
+                isGuessed = true;
             }
         }
+        return isGuessed;
     }
 
     public String getRandomWord() {
@@ -30,7 +36,7 @@ public class GameService {
 
         for (char ch : allCharacters){
             if(ch=='\u0000') {
-                blank += "__";
+                blank += "__"; // Add blanks for unguessed characters
             }
             else {
                 blank += ch;
