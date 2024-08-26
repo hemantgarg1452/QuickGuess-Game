@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>GuessTheWord</title>
+
+    <script th:inline="javascript">
+        function checkIfGameOver(){
+          var NumberOfTriesRemain = [[${RemainingTries}]];
+            if(NumberOfTriesRemain === 0){
+                alert("Game Over");
+            }
+        }
+    </script>
 </head>
 <body>
     <h1 align="center">Guess the word</h1>
     <h3 align="center" th:text="${WordToDisplay}">Show a random word</h3>
+    <h3 align="right" th:text="'Remaining Tries :' + ${RemainingTries}"></h3>
     <hr>
 
 <div align="center">
     <form action="home" method="get">
     <label> Guess A Char : </label>
     <input type="text" name="GuessWord"/>
-    <input type="submit" name="Try"/>
-
+    <input type="submit" value="Try" onclick="checkIfGameOver();"/>
+    </form>
 </div>
-
 
 </body>
 </html>

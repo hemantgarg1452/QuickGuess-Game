@@ -8,9 +8,7 @@ public class GameUtils {
     private int MAX_TRIES = 5;
 
     public int reduceTry(){
-        if (MAX_TRIES > 0) {
-            MAX_TRIES--;
-        }
+        MAX_TRIES--;
         return MAX_TRIES;
     }
 

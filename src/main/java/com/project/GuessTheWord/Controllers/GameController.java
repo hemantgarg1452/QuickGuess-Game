@@ -23,13 +23,13 @@ public class GameController {
         // Fetch the word to display (with guessed characters)
         String randomWord = gameService.getRandomWord();
 
-        if(GuessWord!=null){
+        if (GuessWord != null && !GuessWord.isEmpty()) {
             // Add guessed word and check if it was correct
             boolean isCorrect = GameService.addGuessedWord(GuessWord.charAt(0));
             randomWord = gameService.getRandomWord(); // Update displayed word with guessed character(s)
 
             // If guess was incorrect, reduce tries
-            if(!isCorrect) {
+            if (isCorrect==false) {
                 gameUtils.reduceTry();
             }
         }
@@ -38,8 +38,7 @@ public class GameController {
         System.out.println("Remaining tries are : " + gameUtils.getRemainingTries());
 
         model.addAttribute("WordToDisplay", randomWord);
-        //model.addAttribute("RemainingTries", gameUtils.getRemainingTries());
-
+        model.addAttribute("RemainingTries", gameUtils.getRemainingTries());
         return "Home";
     }
 }
